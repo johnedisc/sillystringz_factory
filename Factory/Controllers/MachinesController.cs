@@ -28,5 +28,14 @@ namespace Factory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index","Home");
     }
+
+    public ActionResult Details(int id)
+    {
+      Machine selectedMachine = _db.Machines
+        .Include(join => join.JoinEntities)
+        .ThenInclude(eng => eng.Engineers)
+        .FirstOrDefault(mac => mac.MachineId == id);
+      return View(selectedMachine);
+    }
   }
 }

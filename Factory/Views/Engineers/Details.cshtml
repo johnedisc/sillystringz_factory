@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<div>
+  <span>engineers.</span>
+</div>
+<div>
+  @using (Html.BeginForm())
+  {
+    <span>first name </span> 
+    @Html.TextBoxFor(eng => eng.First)
+    <span>last name </span>
+    @Html.TextBoxFor(eng => eng.Last)
+    <input type="submit" value="create">
+  }
+</div>
+<div>
+  @Html.ActionLink("go home","Index","Home")
+</div>

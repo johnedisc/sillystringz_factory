@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Factory.Models
+
+<div>
+  <span>@Model.Name</span>
+</div>
+
+<div>
+  <!--
+  @if (Model.Engineers.Length == 0)
+  {
+    <p>no engineers in the system</p>
+  }
+  @foreach (Engineer eng in Model.Engineers)
+  {
+    @Html.ActionLink($"{eng.First} {eng.Last}","Details","Engineers",new { id = eng.EngineerId })
+  }
+  -->
+</div>
+
+<div>
+  @Html.ActionLink("go home","Index","Home")
+</div>
+
+
+
