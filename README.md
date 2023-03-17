@@ -7,6 +7,48 @@
 
 #### an excercise in making a simple ASP.NET MVC website incorporating a database with Entity Framework
 
+``` mermaid
+flowchart TB
+
+  DB((Factory))
+
+  subgraph Engineers
+    eng1("EngineerID")
+  end
+
+  subgraph Machines
+      direction TB
+      mac1("MachineId")
+  end
+
+  subgraph Engineers_Machines
+      direction TB
+      em1("Engineers_MachinesId")
+  end
+
+  DB ..- Engineers
+  DB ..- Machines
+
+ %% Class Colors %%
+  Engineers:::tropical
+  Machines:::tropical
+  Engineers_Machines:::tropical
+  DB:::purple
+
+  %% Colors %%
+
+  classDef tropical fill:#C6EDC3,stroke:#000,stroke-width:2px,font-size:1.5rem,color:black
+  classDef blue fill:#131761,stroke:#000,stroke-width:2px,font-size:1.5rem,color:#fff
+  classDef orange fill:#ECA762,stroke:#000,stroke-width:2px,color:black,font-size:1.5rem
+  classDef red fill:#FF303B,stroke:#000,stroke-width:2px,color:#fff
+  classDef green fill:#027F55,stroke:#000,stroke-width:2px,color:#fff
+  classDef pink fill:#E17A9B,stroke:#333,stroke-width:5px,font-size:1rem,font-weight:700,color:black
+  classDef forestGreen fill:#027F55,stroke:#333,stroke-width:2px,font-size:3rem,font-weight:700
+  classDef yellow fill:#FDF046,stroke:#333,stroke-width:2px,font-size:1.5rem,font-weight:700,color:black
+  classDef purple fill:#D183FD,stroke:#333,stroke-width:2px,font-size:1rem,font-weight:600,color:black
+
+```
+
 ## technologies used
 
 * C#
