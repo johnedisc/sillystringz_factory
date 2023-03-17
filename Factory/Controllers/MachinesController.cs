@@ -33,7 +33,7 @@ namespace Factory.Controllers
     {
       Machine selectedMachine = _db.Machines
         .Include(join => join.JoinEntities)
-        .ThenInclude(eng => eng.Engineers)
+        .ThenInclude(eng => eng.Engineer)
         .FirstOrDefault(mac => mac.MachineId == id);
       return View(selectedMachine);
     }

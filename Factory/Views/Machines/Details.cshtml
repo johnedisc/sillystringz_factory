@@ -9,16 +9,14 @@
 </div>
 
 <div>
-  <!--
-  @if (Model.Engineers.Length == 0)
+  @if (Model.JoinEntities.Length == 0)
   {
     <p>no engineers in the system</p>
   }
-  @foreach (Engineer eng in Model.Engineers)
+  @foreach (Engineer eng in Model.JoinEntities)
   {
     @Html.ActionLink($"{eng.First} {eng.Last}","Details","Engineers",new { id = eng.EngineerId })
   }
-  -->
 </div>
 
 <div>
