@@ -12,10 +12,11 @@ namespace Factory.Controllers
         _db = db;
       }
 
-      [HttpGet("/")]
       public ActionResult Index()
       {
-        return View();
+        Engineer[] engineerList = _db.Engineers.ToList();
+        Machine[] machineList = _db.Machines.ToList();
+        return View(new { Engineers = engineerList, Machines = machineList});
       }
     }
 }
