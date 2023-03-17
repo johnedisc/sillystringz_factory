@@ -22,8 +22,18 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 20vw;
-  min-height: 20vw;
+  min-height: 10vw;
+}
+
+.engineers, .machines {
+  background: #CFB0B2;
+  margin: .5em;
+  min-width: 15vw;
+  min-height: 15vw;
+}
+
+div > * {
+  margin: .3em;
 }
 
 form {
@@ -33,16 +43,11 @@ form {
   align-items: center;
 }
 
-form > * {
-  margin: .5em 0;
-}
-
 .items {
   background: grey;
   color: black;
   border: 2px solid grey;
   border-radius: 2px;
   padding: 2em;
-  margin: 2em;
 }
 

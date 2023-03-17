@@ -2,9 +2,34 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
+
 <div>
-  <span>this is sillystringz</span>
-  <span>more to come soon...</span>
+  <h2>this is sillystringz</h2>
+</div>
+<div class="engineers">
+  <h4>engineers:</h4>
+
+  @if (Model.Engineers.Length == 0)
+  {
+    <p>no engineers in the system</p>
+  }
+  @foreach (Engineer eng in Model.Engineers)
+  {
+    @Html.ActionLink($"{eng.First} {eng.Last}","Details","Engineers",new { id = eng.EngineerId })
+  }
+</div>
+<div class="machines">
+  <h4>machines:</h4>
+
+  @if (Model.Machines.Length == 0)
+  {
+    <p>no machines in the system</p>
+  }
+  @foreach (Machine mac in Model.Machines)
+  {
+    @Html.ActionLink($"{mac.Name}","Details","Machines",new { id = mac.MachineId })
+  }
 </div>
 <div>
   @Html.ActionLink("add an engineer","Create","Engineers")
