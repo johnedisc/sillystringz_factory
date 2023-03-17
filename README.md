@@ -13,28 +13,29 @@ title: Factory DB/Class Structure
 ---
 classDiagram
     note "this can help"
-    Animal <|-- Duck
-    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
+    
+    class Engineers{
+        +int EngineerID
+        +string First
+        +string Last
+        +List<Engineers_Machines>JoinEnt
     }
-    class Fish{
-        -int sizeInFeet
-        -canEat()
+
+    class Machines{
+        +int EngineerID
+        +string Name
+        +List<Engineers_Machines>JoinEnt
     }
-    class Zebra{
-        +bool is_wild
-        +run()
+
+    class Engineers_Machines {
+        +int Engineers_MachinesId
+        +int EngineerID
+        +int MachineId
+        +Engineer Engineer
+        +Machine Machine
     }
 ```
+
 ```mermaid
 flowchart TB
 
