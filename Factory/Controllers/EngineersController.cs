@@ -15,5 +15,11 @@ namespace Factory.Controllers
     {
       _db = db;
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
   }
 }

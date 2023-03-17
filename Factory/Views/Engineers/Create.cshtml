@@ -2,8 +2,19 @@
   Layout = "_Layout";
 }
 
+@model Factory.Models.Engineer
+
 <div>
   <span>engineers.</span>
+</div>
+<div>
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(eng => eng.First)
+    @Html.TextBoxFor(eng => eng.First)
+    @Html.LabelFor(eng => eng.Last)
+    @Html.TextBoxFor(eng => eng.Last)
+  }
 </div>
 <div>
   @Html.ActionLink("go home","Index","Home")
