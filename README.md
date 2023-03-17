@@ -13,27 +13,47 @@ flowchart TB
   DB((Factory))
 
   subgraph Engineers
+    direction TB
     eng1("EngineerID")
-  end
-
-  subgraph Machines
-      direction TB
-      mac1("MachineId")
+    eng2("First")
+    eng3("Last")
+    eng4["List<Engineers_Machines>JoinEnt"]
   end
 
   subgraph Engineers_Machines
       direction TB
       em1("Engineers_MachinesId")
+      em2("EngineerID")
+      em3("MachineId")
+      em4("Engineer(Model)")
+      em5["Machine(Model)"]
   end
 
+  subgraph Machines
+      direction TB
+      mac1("MachineId")
+      mac2("Name")
+      mac3["List<Engineers_Machines>JoinEnt"]
+  end
+
+
+  em5 --> eng4
+  eng4 --> mac3
+  eng1 --> em2
+  mac1 --> em3
   DB ..- Engineers
   DB ..- Machines
+  DB ..- Engineers_Machines
 
  %% Class Colors %%
+  Note:::pink
   Engineers:::tropical
   Machines:::tropical
   Engineers_Machines:::tropical
   DB:::purple
+  eng4:::purple
+  mac3:::purple
+  em5:::purple
 
   %% Colors %%
 
@@ -42,11 +62,13 @@ flowchart TB
   classDef orange fill:#ECA762,stroke:#000,stroke-width:2px,color:black,font-size:1.5rem
   classDef red fill:#FF303B,stroke:#000,stroke-width:2px,color:#fff
   classDef green fill:#027F55,stroke:#000,stroke-width:2px,color:#fff
-  classDef pink fill:#E17A9B,stroke:#333,stroke-width:5px,font-size:1rem,font-weight:700,color:black
+  classDef pink fill:#E17A9B,stroke:#333,stroke-width:2px,font-size:1rem,font-weight:500,color:black
   classDef forestGreen fill:#027F55,stroke:#333,stroke-width:2px,font-size:3rem,font-weight:700
   classDef yellow fill:#FDF046,stroke:#333,stroke-width:2px,font-size:1.5rem,font-weight:700,color:black
   classDef purple fill:#D183FD,stroke:#333,stroke-width:2px,font-size:1rem,font-weight:600,color:black
 
+  Note["*****purple entities are navigation properties 
+  and exist only in session memory in the application"]
 ```
 
 ## technologies used
