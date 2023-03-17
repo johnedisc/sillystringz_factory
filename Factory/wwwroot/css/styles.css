@@ -1,0 +1,49 @@
+div#footer {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	color:#CCC;
+	background:#333;
+	padding:8px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 35vh 0vh;
+  background-color: black;
+  color: white;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 20vw;
+  min-height: 20vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form > * {
+  margin: .5em 0;
+}
+
+.items {
+  background: grey;
+  color: black;
+  border: 2px solid grey;
+  border-radius: 2px;
+  padding: 2em;
+  margin: 2em;
+}
+
