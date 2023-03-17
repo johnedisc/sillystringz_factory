@@ -14,36 +14,36 @@ flowchart TB
 
   subgraph Engineers
     direction TB
-    eng1("EngineerID")
-    eng2("First")
-    eng3("Last")
+    eng1("EngineerID") -->
+    eng2("First") -->
+    eng3("Last") -->
     eng4["List<Engineers_Machines>JoinEnt"]
   end
 
   subgraph Engineers_Machines
       direction TB
-      em1("Engineers_MachinesId")
-      em2("EngineerID")
-      em3("MachineId")
-      em4("Engineer(Model)")
+      em1("Engineers_MachinesId") -->
+      em2("EngineerID") -->
+      em3("MachineId") -->
+      em4("Engineer(Model)") -->
       em5["Machine(Model)"]
   end
 
   subgraph Machines
       direction TB
-      mac1("MachineId")
-      mac2("Name")
+      mac1("MachineId") -->
+      mac2("Name") -->
       mac3["List<Engineers_Machines>JoinEnt"]
   end
 
 
+  DB ..- Engineers
+  DB ..- Machines
+  DB ..- Engineers_Machines
   em5 --> eng4
   eng4 --> mac3
   eng1 --> em2
   mac1 --> em3
-  DB ..- Engineers
-  DB ..- Machines
-  DB ..- Engineers_Machines
 
  %% Class Colors %%
   Note:::pink
