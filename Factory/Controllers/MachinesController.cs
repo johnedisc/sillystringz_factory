@@ -18,12 +18,23 @@ namespace Factory.Controllers
     
     public ActionResult Create()
     {
-      return View();
+      if (_db.Engineers.ToList().Count == 0)
+      {
+        return RedirectToAction("Create","Engineers");
+      }
+      else
+      {
+        ViewBag.Engineers = new SelectList(_db.Engineers, "EngineerId", "First");
+        return View();
+      }
     }
 
     [HttpPost]
-    public ActionResult Create(Machine formData)
+    public ActionResult Create(Machine newMachine, int id)
     {
+      Engineer selectedEngineer = _db.Engineers
+        .FirstOrDefault(engineer => engineer.EngineerId = id);
+      formData
       _db.Machines.Add(formData);
       _db.SaveChanges();
       return RedirectToAction("Index","Home");

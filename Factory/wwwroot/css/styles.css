@@ -43,6 +43,10 @@ form {
   align-items: center;
 }
 
+form > * {
+  margin: .3em;
+}
+
 .items {
   background: grey;
   color: black;

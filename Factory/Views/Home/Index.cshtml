@@ -7,6 +7,7 @@
 <div>
   <h2>this is sillystringz</h2>
 </div>
+
 <div class="engineers">
   <h4>engineers:</h4>
 
@@ -19,6 +20,7 @@
     @Html.ActionLink($"{eng.First} {eng.Last}","Details","Engineers",new { id = eng.EngineerId })
   }
 </div>
+
 <div class="machines">
   <h4>machines:</h4>
 
@@ -31,6 +33,7 @@
     @Html.ActionLink($"{mac.Name}","Details","Machines",new { id = mac.MachineId })
   }
 </div>
+
 <div>
   @Html.ActionLink("add an engineer","Create","Engineers")
   @Html.ActionLink("add a machine","Create","Machines")
