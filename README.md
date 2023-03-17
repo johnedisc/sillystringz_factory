@@ -8,35 +8,6 @@
 #### an excercise in making a simple ASP.NET MVC website incorporating a database with Entity Framework
 
 ```mermaid
----
-title: Factory DB/Class Structure
----
-classDiagram
-    note "this can help"
-    
-    class Engineers{
-        +int EngineerID
-        +string First
-        +string Last
-        +List<Engineers_Machines>JoinEnt
-    }
-
-    class Machines{
-        +int EngineerID
-        +string Name
-        +List<Engineers_Machines>JoinEnt
-    }
-
-    class Engineers_Machines {
-        +int Engineers_MachinesId
-        +int EngineerID
-        +int MachineId
-        +Engineer Engineer
-        +Machine Machine
-    }
-```
-
-```mermaid
 flowchart TB
 
   DB((Factory))

@@ -1,68 +1,19 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using Factory.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ToDoList.Controllers
+namespace Factory.Controllers
 {
-  public class ItemsController : Controller
+  public class EngineersController : Controller
   {
-    private readonly ToDoListContext _db;
+    private readonly FactoryContext _db;
 
-    public ItemsController(ToDoListContext db)
+    public EngineersController(FactoryContext db)
     {
       _db = db;
     }
-
-    public ActionResult Index()
-    {
-      return View();
-    }
-
-    public ActionResult Create()
-    {
-      return View();
-    }
-
-    [HttpPost]
-    public ActionResult Create()
-    {
-    }
-
-    public ActionResult Details()
-    {
-      return View();
-    }
-
-    public ActionResult Edit()
-    {
-      return View();
-    }
-
-    [HttpPost]
-    public ActionResult Edit()
-    {
-      return View();
-    }
-
-    public ActionResult Delete()
-    {
-      return View();
-    }
-
-    [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed()
-    {
-      return RedirectToAction();
-    }
-
-
-    [HttpPost]
-    public ActionResult DeleteJoin()
-    {
-      return RedirectToAction();
-    } 
   }
 }
