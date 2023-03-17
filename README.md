@@ -7,32 +7,60 @@
 
 #### an excercise in making a simple ASP.NET MVC website incorporating a database with Entity Framework
 
-``` mermaid
+```mermaid
+---
+title: Factory DB/Class Structure
+---
+classDiagram
+    note "this can help"
+    Animal <|-- Duck
+    note for Duck "can fly\ncan swim\ncan dive\ncan help in debugging"
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+```
+```mermaid
 flowchart TB
 
   DB((Factory))
 
   subgraph Engineers
     direction TB
-    eng1("EngineerID") -->
-    eng2("First") -->
-    eng3("Last") -->
+    eng1("EngineerID") ---
+    eng2("First") ---
+    eng3("Last") ---
     eng4["List<Engineers_Machines>JoinEnt"]
   end
 
   subgraph Engineers_Machines
       direction TB
-      em1("Engineers_MachinesId") -->
-      em2("EngineerID") -->
-      em3("MachineId") -->
-      em4("Engineer(Model)") -->
+      em1("Engineers_MachinesId") ---
+      em2("EngineerID") ---
+      em3("MachineId") ---
+      em4("Engineer(Model)") ---
       em5["Machine(Model)"]
   end
 
   subgraph Machines
       direction TB
-      mac1("MachineId") -->
-      mac2("Name") -->
+      mac1("MachineId") ---
+      mac2("Name") ---
       mac3["List<Engineers_Machines>JoinEnt"]
   end
 
@@ -41,7 +69,7 @@ flowchart TB
   DB ..- Machines
   DB ..- Engineers_Machines
   em5 --> eng4
-  eng4 --> mac3
+  em5 --> mac3
   eng1 --> em2
   mac1 --> em3
 
