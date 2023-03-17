@@ -15,5 +15,18 @@ namespace Factory.Controllers
     {
       _db = db;
     }
+    
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Machine formData)
+    {
+      _db.Machines.Add(formData);
+      _db.SaveChanges();
+      return RedirectToAction("Index","Home");
+    }
   }
 }

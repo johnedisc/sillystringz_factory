@@ -10,10 +10,11 @@
 <div>
   @using (Html.BeginForm())
   {
-    @Html.LabelFor(eng => eng.First)
+    <span>first name </span> 
     @Html.TextBoxFor(eng => eng.First)
-    @Html.LabelFor(eng => eng.Last)
+    <span>last name </span>
     @Html.TextBoxFor(eng => eng.Last)
+    <input type="submit" value="create">
   }
 </div>
 <div>

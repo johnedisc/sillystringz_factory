@@ -21,5 +21,13 @@ namespace Factory.Controllers
       return View();
     }
 
+    [HttpPost]
+    public ActionResult Create(Engineer formData)
+    {
+      _db.Engineers.Add(formData);
+      _db.SaveChanges();
+      return RedirectToAction("Index","Home");
+    }
+
   }
 }

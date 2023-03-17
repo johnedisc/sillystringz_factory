@@ -2,9 +2,19 @@
   Layout = "_Layout";
 }
 
+@model Factory.Models.Machine
+
 <div>
   <span>machines.</span>
 </div>
 <div>
-  @Html.ActionLink("home","Index","Home")
+  @using (Html.BeginForm())
+  {
+    <span>first name </span> 
+    @Html.TextBoxFor(mac => mac.Name)
+    <input type="submit" value="create">
+  }
+</div>
+<div>
+  @Html.ActionLink("go home","Index","Home")
 </div>
