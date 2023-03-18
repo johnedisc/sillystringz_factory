@@ -32,10 +32,20 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine newMachine, int id)
     {
-      _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = id, MachineId = newMachine.MachineId } );
-      _db.Machines.Add(newMachine);
-      _db.SaveChanges();
-      return RedirectToAction("Index","Home");
+      #nullable enable
+      EngineerMachine? JoinEntities = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == id && join.MachineId == newMachine.MachineId));
+      #nullable disable
+      if (JoinEntities == null)
+      {
+        _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = id, MachineId = newMachine.MachineId } );
+        _db.Machines.Add(newMachine);
+        _db.SaveChanges();
+        return RedirectToAction("Index","Home");
+      }
+      else
+      {
+        return RedirectToAction("Index","Home");
+      }
     }
 
     public ActionResult Details(int id)
