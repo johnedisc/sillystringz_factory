@@ -9,13 +9,18 @@
 </div>
 
 <div>
-  @if (Model.JoinEntities.Engineer.Count == 0)
+  @if (Model.JoinEntities.Count == 0)
   {
     <p>no engineers in the system</p>
+    <p>add one!</p>
   }
-  @foreach (Engineer eng in Model.JoinEntities)
+</div>
+
+<div>
+  @using (Html.BeginForm())
   {
-    @Html.ActionLink($"{eng.First} {eng.Last}","Details","Engineers",new { id = eng.EngineerId })
+    <span>choose an engineer for maintanence</span>
+    @Html.DropDownList("EngineerId")
   }
 </div>
 
