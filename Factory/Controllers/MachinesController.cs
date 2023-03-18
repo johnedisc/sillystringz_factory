@@ -32,10 +32,8 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine newMachine, int id)
     {
-      Engineer selectedEngineer = _db.Engineers
-        .FirstOrDefault(engineer => engineer.EngineerId = id);
-      formData
-      _db.Machines.Add(formData);
+      _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = id, MachineId = newMachine.MachineId } );
+      _db.Machines.Add(newMachine);
       _db.SaveChanges();
       return RedirectToAction("Index","Home");
     }
