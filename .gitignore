@@ -2,4 +2,5 @@ obj
 bin
 appsettings.json
 session.nvim
-
+launch.json
+.vscode
