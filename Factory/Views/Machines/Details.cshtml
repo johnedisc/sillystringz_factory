@@ -2,11 +2,10 @@
   Layout = "_Layout";
 }
 
-@using Factory.Models
 @model Factory.Models.Machine
 
 <div>
-  <span>machine name: @Model.Name </span>
+  <span>machine name: @Html.DisplayFor(machine => machine.Name) </span>
 </div>
 
 <div>
