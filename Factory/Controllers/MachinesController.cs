@@ -49,10 +49,28 @@ namespace Factory.Controllers
 
     public ActionResult Details(int id)
     {
-      ViewBag.Engineers = new SelectList(_db.Engineers,"EngineerId","Name");
+      ViewBag.Engineers = new SelectList(_db.Engineers,"EngineerId","First");
       Machine selectedMachine = _db.Machines
         .FirstOrDefault(machine => machine.MachineId == id);
       return View(selectedMachine);
+    }
+
+    [HttpPost]
+    public ActionResult Details(Machine machine,int engineerId)
+    {
+      #nullable enable
+      EngineerMachine? JoinEntities = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == machine.MachineId));
+      #nullable disable
+      if (JoinEntities == null)
+      {
+        _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = engineerId, MachineId = machine.MachineId } );
+        _db.SaveChanges();
+        return RedirectToAction("Details","Machines");
+      }
+      else
+      {
+        return RedirectToAction("Details","Machines");
+      }
     }
   }
 }

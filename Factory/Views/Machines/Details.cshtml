@@ -3,25 +3,26 @@
 }
 
 @using Factory.Models
+@model Factory.Models.Machine
 
 <div>
-  <span>@Model.Name</span>
+  <span>machine name: @Model.Name </span>
 </div>
 
 <div>
   @if (Model.JoinEntities == null)
   {
-    <p>no engineers in the system</p>
-    <p>add one!</p>
+    <p>no engineers connected to this machine.</p>
   }
 </div>
 
 <div>
   @using (Html.BeginForm())
   {
+    @Html.HiddenFor(model => model.MachineId)
     <span>choose an engineer for maintanence</span>
     @Html.DropDownList("Engineers")
-    <input type="submit" value="assign">
+    <input type="submit" value="assign" />
   }
 </div>
 
