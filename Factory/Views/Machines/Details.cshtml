@@ -24,11 +24,13 @@
   }
   else
   {
+    
     <p>assigned engineers:</p>
 
     @foreach (EngineerMachine engMac in Model.JoinEntities)
     {
-    @Html.ActionLink(@engMac.Engineer.First,"Details","Engineer",new { engineerId = engMac.Engineer.EngineerId })
+    <span>@Html.ActionLink(@engMac.Engineer.First,"Details","Engineer",new { engineerId = engMac.Engineer.EngineerId })
+      @Html.ActionLink("unassign engineer","DeleteJoin","Machines",new { id = engMac.EngineerMachineId, machineId = Model.MachineId })</span>
     }
   }
 

@@ -47,7 +47,7 @@ namespace Factory.Controllers
       }
     }
 
-    public ActionResult Details(int id, bool error)
+    public ActionResult Details(int id, bool error = false)
     {
       ViewBag.Engineers = new SelectList(_db.Engineers,"EngineerId","First");
       Machine selectedMachine = _db.Machines
@@ -78,6 +78,16 @@ namespace Factory.Controllers
         return RedirectToAction("Details","Machines", new { id = machine.MachineId, error = true });
       }
     }
+    
+    public ActionResult DeleteJoin(int id, int machineId)
+    {
+      EngineerMachine joinEntity = _db.EngineerMachines
+        .FirstOrDefault(join => join.EngineerMachineId == id);
+      _db.EngineerMachines.Remove(joinEntity);
+      _db.SaveChanges();
+      return RedirectToAction("Details","Machines", new { id = machineId });
+    }
+
   }
 
 }
