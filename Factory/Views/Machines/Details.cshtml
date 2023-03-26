@@ -11,7 +11,7 @@
 
   @if (ViewBag.Error != null)
   {
-  <div class="error">
+  <div class="error subtitle">
     <p>@ViewBag.Error</p>
   </div>
   }
@@ -25,21 +25,25 @@
   else
   {
     
-    <p>assigned engineers:</p>
+  <div class="engineers">
+    
+    <p class="subtitle">assigned engineers:</p>
 
     @foreach (EngineerMachine engMac in Model.JoinEntities)
     {
-    <span>@Html.ActionLink(@engMac.Engineer.First,"Details","Engineer",new { engineerId = engMac.Engineer.EngineerId })
+    <span class="text">@Html.ActionLink(@engMac.Engineer.First,"Details","Engineer",new { engineerId = engMac.Engineer.EngineerId })
       @Html.ActionLink("unassign engineer","DeleteJoin","Machines",new { id = engMac.EngineerMachineId, machineId = Model.MachineId })</span>
     }
+  </div>
   }
+
 
 
 <div>
   @using (Html.BeginForm())
   {
     @Html.HiddenFor(model => model.MachineId)
-    <span>choose an engineer for maintanence</span>
+    <span class="subtitle">choose an engineer for maintanence</span>
 
     @Html.DropDownList("Engineers")
     <input type="submit" value="assign" />

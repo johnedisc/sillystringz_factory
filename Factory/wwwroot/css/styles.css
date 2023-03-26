@@ -72,3 +72,19 @@ form > * {
   padding: 2em;
 }
 
+.title {
+  font-size: 2rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+}
+
+p, a {
+  font-size: 1.1rem;
+}
+
+input, select {
+  font-family: inherit;
+  font-weight: 700;
+}
