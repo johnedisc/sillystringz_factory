@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+
 header {
 	position:fixed;
 	top:0px;
@@ -9,12 +11,23 @@ header {
 }
 
 body {
+  font-family: 'Cutive Mono', monospace;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: black;
   color: white;
+}
+
+[href] {
+  text-decoration: none;
+  color: black;
+}
+
+[href]:hover {
+  color:purple;
+  font-weight: bolder;
 }
 
 div {
@@ -26,7 +39,7 @@ div {
 }
 
 .engineers, .machines {
-  background: #CFB0B2;
+  background: peru;
   margin: .5em;
   min-width: 15vw;
   min-height: 15vw;
