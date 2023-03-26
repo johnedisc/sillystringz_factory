@@ -51,6 +51,16 @@
 </div>
 
 <div>
+  @using (Html.BeginForm("Delete","Machines"))
+  {
+    @Html.HiddenFor(model => model.MachineId)
+    <span class="subtitle">delete this machine</span>
+
+    <input type="submit" value="delete" />
+  }
+</div>
+
+<div>
   @Html.ActionLink("go home","Index","Home")
 </div>
 

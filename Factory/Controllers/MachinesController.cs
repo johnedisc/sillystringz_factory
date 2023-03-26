@@ -31,20 +31,9 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Machine newMachine, int id)
     {
-      #nullable enable
-      EngineerMachine? JoinEntities = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == id && join.MachineId == newMachine.MachineId));
-      #nullable disable
-      if (JoinEntities == null)
-      {
-        _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = id, MachineId = newMachine.MachineId } );
-        _db.Machines.Add(newMachine);
-        _db.SaveChanges();
-        return RedirectToAction("Index","Home");
-      }
-      else
-      {
-        return RedirectToAction("Index","Home");
-      }
+      _db.Machines.Add(newMachine);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = newMachine.MachineId } );
     }
 
     public ActionResult Details(int id, bool error = false)
@@ -64,7 +53,7 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Details(Machine machine,int Engineers)
     {
-      #nullable enable
+      #nullable enable 
       EngineerMachine? JoinEntities = _db.EngineerMachines.FirstOrDefault(join => (join.EngineerId == Engineers && join.MachineId == machine.MachineId));
       #nullable disable
       if (JoinEntities == null)
@@ -86,6 +75,15 @@ namespace Factory.Controllers
       _db.EngineerMachines.Remove(joinEntity);
       _db.SaveChanges();
       return RedirectToAction("Details","Machines", new { id = machineId });
+    }
+
+    public ActionResult Delete(int machineId)
+    {
+      Machine selectedMachine = _db.Machines
+        .FirstOrDefault(machine => machine.MachineId == machineId);
+      _db.Machines.Remove(selectedMachine);
+      _db.SaveChanges();
+      return RedirectToAction("Index","Home");
     }
 
   }
