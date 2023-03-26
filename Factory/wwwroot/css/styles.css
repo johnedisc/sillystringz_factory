@@ -22,12 +22,16 @@ body {
 
 [href] {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 [href]:hover {
   color:purple;
   font-weight: bolder;
+}
+
+.error {
+  color: red;
 }
 
 div {

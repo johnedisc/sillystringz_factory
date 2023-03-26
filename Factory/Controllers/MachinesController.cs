@@ -47,13 +47,17 @@ namespace Factory.Controllers
       }
     }
 
-    public ActionResult Details(int id)
+    public ActionResult Details(int id, bool error)
     {
       ViewBag.Engineers = new SelectList(_db.Engineers,"EngineerId","First");
       Machine selectedMachine = _db.Machines
         .Include(machine => machine.JoinEntities)
         .ThenInclude(join => join.Engineer)
         .FirstOrDefault(machine => machine.MachineId == id);
+      if (error)
+      {
+        ViewBag.Error = "That engineer already is paired with this machine";
+      }
       return View(selectedMachine);
     }
 
@@ -71,8 +75,9 @@ namespace Factory.Controllers
       }
       else
       {
-        return RedirectToAction("Details","Machines");
+        return RedirectToAction("Details","Machines", new { id = machine.MachineId, error = true });
       }
     }
   }
+
 }

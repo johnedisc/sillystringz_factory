@@ -2,18 +2,36 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
 @model Factory.Models.Machine
 
-<div>
+<div class="title">
   <span>machine name: @Html.DisplayFor(machine => machine.Name) </span>
 </div>
 
-<div>
+  @if (ViewBag.Error != null)
+  {
+  <div class="error">
+    <p>@ViewBag.Error</p>
+  </div>
+  }
+
   @if (Model.JoinEntities == null)
   {
+
     <p>no engineers connected to this machine.</p>
+
   }
-</div>
+  else
+  {
+    <p>assigned engineers:</p>
+
+    @foreach (EngineerMachine engMac in Model.JoinEntities)
+    {
+    @Html.ActionLink(@engMac.Engineer.First,"Details","Engineer",new { engineerId = engMac.Engineer.EngineerId })
+    }
+  }
+
 
 <div>
   @using (Html.BeginForm())
