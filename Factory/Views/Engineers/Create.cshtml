@@ -2,20 +2,35 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
 @model Factory.Models.Engineer
 
 <div>
   <span>engineers.</span>
 </div>
 <div>
-  <span class="error">@ViewBag.Error</span>
-  @using (Html.BeginForm())
+  @if (Model != null)
   {
-    <span>first name </span> 
-    @Html.TextBoxFor(eng => eng.First)
-    <span>last name </span>
-    @Html.TextBoxFor(eng => eng.Last)
-    <input type="submit" value="create">
+    @using (Html.BeginForm("Edit","Engineers"))
+    {
+      <span>first name </span> 
+      @Html.TextBoxFor(eng => eng.First)
+      <span>last name </span>
+      @Html.TextBoxFor(eng => eng.Last)
+      <input type="submit" value="create">
+    }
+  }
+  else
+  {
+    <span class="error">@ViewBag.Error</span>
+    @using (Html.BeginForm())
+    {
+      <span>first name </span> 
+      @Html.TextBoxFor(eng => eng.First)
+      <span>last name </span>
+      @Html.TextBoxFor(eng => eng.Last)
+      <input type="submit" value="create">
+    }
   }
 </div>
 <div>

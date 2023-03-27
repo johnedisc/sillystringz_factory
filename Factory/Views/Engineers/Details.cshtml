@@ -2,21 +2,64 @@
   Layout = "_Layout";
 }
 
+@using Factory.Models
 @model Factory.Models.Engineer
 
-<div>
-  <span>engineers.</span>
+<div class="title">
+  <span>engineer name: @Html.DisplayFor(engineer => engineer.First) @Html.DisplayFor(engineer => engineer.Last)</span>
 </div>
+
+@if (ViewBag.Error != null)
+{
+<div class="error subtitle">
+  <p>@ViewBag.Error</p>
+</div>
+}
+
+@if (Model.JoinEntities == null)
+{
+
+  <p>no machines connected to this engineer.</p>
+
+}
+else
+{
+  <div class="machines">
+    
+    <p class="subtitle">assigned machines:</p>
+
+    @foreach (EngineerMachine engMac in Model.JoinEntities)
+    {
+    <span class="text">@Html.ActionLink(@engMac.Machine.Name,"Details","Machine",new { machineId = engMac.Machine.MachineId })
+      @Html.ActionLink("unassign machine","DeleteJoin","Engineers",new { id = engMac.EngineerMachineId, engineerId = Model.EngineerId })</span>
+    }
+  </div>
+}
+
 <div>
   @using (Html.BeginForm())
   {
-    <span>first name </span> 
-    @Html.TextBoxFor(eng => eng.First)
-    <span>last name </span>
-    @Html.TextBoxFor(eng => eng.Last)
-    <input type="submit" value="create">
+    @Html.HiddenFor(model => model.EngineerId)
+    <span class="subtitle">choose an machine for this engineer</span>
+
+    @Html.DropDownList("Machines")
+    <input type="submit" value="assign" />
   }
 </div>
+
 <div>
+  @using (Html.BeginForm("Delete","Engineers"))
+  {
+    @Html.HiddenFor(model => model.EngineerId)
+    <span class="subtitle">delete this engineer</span>
+
+    <input type="submit" value="delete" />
+  }
+</div>
+
+<div>
+  @Html.ActionLink("edit","Create","Engineers", new { engineerId = Model.EngineerId })
   @Html.ActionLink("go home","Index","Home")
+  @Html.ActionLink("add an engineer","Create","Engineers")
+  @Html.ActionLink("add a machine","Create","Machines")
 </div>
