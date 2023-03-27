@@ -1,9 +1,9 @@
 
 
 
-# [sillystrinzFactory]()
+# [sillystrinzFactory](https://github.com/johnedisc/sillystringz_factory)
 
-#### by [johnedisc](https://johnedisc.github.io)
+#### by [johnedisc](https://johnedisc.github.io/portfolio/)
 
 #### an excercise in making a simple ASP.NET MVC website incorporating a database with Entity Framework
 
@@ -76,23 +76,27 @@ flowchart TB
 * C#
 * ASP.NET 6
 * entity framework
+* Microsoft Identity for authentication and authorization
 * mysql
 * neovim text editor
 * netcoredbg, samsung's open source dotnet debugger
 
 ## description
 
+* this is an epicodus weekly project in the C# and .NET framework section of the course. it required making multiple classes and multiple controllers to route the content to different views with both attribute routing and html helpers. the site also employees many-to-many entities with the entity core framework object relational database.
+* the styling is accomplished using shared views to allow passing html snippets to different parts of the website and incorporates a simple css stylesheet
+
 
 ## setup/installation requirements
 
 * open a terminal on your machine
-* clone down the [repository from github](https://github.com/johnedisc/salon.git) inside the directory of your choosing
+* clone down the [repository from github](https://github.com/johnedisc/sillystringz_factory) inside the directory of your choosing
 ```bash
-git clone https://github.com/johnedisc/salon.git
+git clone https://github.com/johnedisc/sillystringz_factory
 ```
-* move into the project directory (HairSalon/)
+* move into the project directory (Factory/)
 ```bash
-cd HairSalon.Solution/HairSalon
+cd sillystringz_factory.Solution/Factory
 ```
 * create appsettings.json file here. first edit [yourDatabaseName], [mysqlIdName], [yourPassword] to your own settings
 ```bash
@@ -102,22 +106,12 @@ printf '{
   }
 }' > appsettings.json
 ```
-* create a database with whatever name you choose
+* make sure to turn on your mysql server client. this varies with OS. For Ubuntu for example it is the following:
 ```bash
-mysql -u YOUR_USERNAME -p
+sudo service mysql start
 ```
-```sql
-mysql> create database SOMENAME;
-mysql> \q
-```
-* go back a directory and use the chris_johnedis.sql file to create a database and its tables (be sure you have mysql server >= 8 installed)
+* run the project
 ```bash
-pushd ../
-mysql -u username -p SOMENAME < chris_johnedis.sql
-```
-* go back to the project directory and run the application
-```bash
-pushd
 dotnet run watch
 ```
 
