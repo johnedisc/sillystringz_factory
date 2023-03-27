@@ -13,11 +13,12 @@
   {
     @using (Html.BeginForm("Edit","Engineers"))
     {
+      @Html.HiddenFor(eng => eng.EngineerId)
       <span>first name </span> 
-      @Html.TextBoxFor(eng => eng.First)
+      @Html.EditorFor(eng => eng.First)
       <span>last name </span>
-      @Html.TextBoxFor(eng => eng.Last)
-      <input type="submit" value="create">
+      @Html.EditorFor(eng => eng.Last)
+      <input type="submit" value="edit">
     }
   }
   else
