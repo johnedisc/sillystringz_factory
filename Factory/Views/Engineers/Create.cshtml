@@ -9,8 +9,6 @@
 </div>
 <div>
   <span class="error">@ViewBag.Error</span>
-</div>
-<div>
   @using (Html.BeginForm())
   {
     <span>first name </span> 
@@ -22,6 +20,5 @@
 </div>
 <div>
   @Html.ActionLink("go home","Index","Home")
-  @Html.ActionLink("add an engineer","Create","Engineers")
   @Html.ActionLink("add a machine","Create","Machines")
 </div>

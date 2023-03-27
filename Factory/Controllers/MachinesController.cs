@@ -15,7 +15,7 @@ namespace Factory.Controllers
       _db = db;
     }
     
-    public ActionResult Create(int machineId)
+    public ActionResult Create(int machineId = 0)
     {
       if (machineId > 0)
       {
