@@ -15,9 +15,15 @@ namespace Factory.Controllers
       _db = db;
     }
     
-    public ActionResult Create()
+    public ActionResult Create(int machineId)
     {
-      if (_db.Engineers.ToList().Count == 0)
+      if (machineId > 0)
+      {
+        Machine selectedMachine = _db.Machines
+          .FirstOrDefault(machine => machine.MachineId == machineId);
+        return View(selectedMachine);
+      }
+      else if (_db.Engineers.ToList().Count == 0)
       {
         return RedirectToAction("Create","Engineers", new { error = "you need to add an engineer to the system before you can add a machine" });
       }
@@ -81,6 +87,14 @@ namespace Factory.Controllers
       Machine selectedMachine = _db.Machines
         .FirstOrDefault(machine => machine.MachineId == machineId);
       _db.Machines.Remove(selectedMachine);
+      _db.SaveChanges();
+      return RedirectToAction("Index","Home");
+    }
+
+    public ActionResult Edit(Machine machine, int machineId)
+    {
+      machine.MachineId = machineId;
+      _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index","Home");
     }

@@ -61,6 +61,7 @@
 </div>
 
 <div>
+  @Html.ActionLink("edit","Create","Machines", new { machineId = Model.MachineId })
   @Html.ActionLink("go home","Index","Home")
   @Html.ActionLink("add an engineer","Create","Engineers")
   @Html.ActionLink("add a machine","Create","Machines")

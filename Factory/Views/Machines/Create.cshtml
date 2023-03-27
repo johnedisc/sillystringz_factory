@@ -8,11 +8,24 @@
   <span>machines.</span>
 </div>
 <div>
+  @if (Model.MachineId > 0)
+  {
+    @using (Html.BeginForm("Edit","Machines"))
+    {
+      <span>machine name:</span> 
+      @Html.HiddenFor(mac => mac.MachineId)
+      @Html.EditorFor(mac => mac.Name)
+      <input type="submit" value="create">
+    }
+  }
+  else
+  {
   @using (Html.BeginForm())
   {
     <span>machine name:</span> 
     @Html.TextBoxFor(mac => mac.Name)
     <input type="submit" value="create">
+  }
   }
 </div>
 <div>
