@@ -16,8 +16,9 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    public ActionResult Create()
+    public ActionResult Create(string error = "")
     {
+      ViewBag.Error = error;
       return View();
     }
 

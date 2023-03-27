@@ -19,11 +19,10 @@ namespace Factory.Controllers
     {
       if (_db.Engineers.ToList().Count == 0)
       {
-        return RedirectToAction("Create","Engineers");
+        return RedirectToAction("Create","Engineers", new { error = "you need to add an engineer to the system before you can add a machine" });
       }
       else
       {
-        ViewBag.Engineers = new SelectList(_db.Engineers, "EngineerId", "First");
         return View();
       }
     }
@@ -33,7 +32,7 @@ namespace Factory.Controllers
     {
       _db.Machines.Add(newMachine);
       _db.SaveChanges();
-      return RedirectToAction("Details", new { id = newMachine.MachineId } );
+      return RedirectToAction("Index","Home");
     }
 
     public ActionResult Details(int id, bool error = false)
